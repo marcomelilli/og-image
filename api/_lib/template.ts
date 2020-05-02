@@ -84,7 +84,7 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .spacer {
-        margin: 150px;
+        margin: 100px;
     }
 
     .emoji {
@@ -97,9 +97,22 @@ function getCss(theme: string, fontSize: string) {
     .heading {
         font-family: 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
+        font-style: bold;
+        color: ${foreground};
+        line-height: 1.3;
+    }
+
+        .heading span{
+            border-bottom: 30px solid #4676d6c7;
+        }
+
+    .site-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 60px;
         font-style: normal;
         color: ${foreground};
-        line-height: 1.8;
+        
+        margin: 60px 0px;
     }`;
 }
 
@@ -122,10 +135,13 @@ export function getHtml(parsedReq: ParsedRequest) {
                 ).join('')}
             </div>
             <div class="spacer">
-            <div class="heading">${emojify(
-                md ? marked(text) : sanitizeHtml(text)
-            )}
+            <div class="heading">
+                <span>${emojify(
+                    md ? marked(text) : sanitizeHtml(text)
+                )}</span>
             </div>
+            <div class="spacer">
+            <span class="site-title"> marcomelilli.com </span>
         </div>
     </body>
 </html>`;
